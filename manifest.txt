@@ -1,0 +1,91 @@
+
+---
+### `manifest.txt`
+
+```text
+Project: Fraud Detection Using AutoEncoder (PyOD) with KaggleHub
+Course: MSCS-633-M50
+Student: Shimon Bhandari
+Date: 11/23/2025
+
+Description:
+This project implements an unsupervised credit card fraud detection system using an AutoEncoder model from the PyOD library. The dataset is loaded dynamically from Kaggle using KaggleHub, avoiding local storage of large CSV files. The model is trained on non-fraud transactions and evaluated using common classification metrics and ROC-AUC.
+
+Files:
+- src/train_autoencoder.py
+    Main Python script that:
+    - Loads the dataset via KaggleHub (whenamancodes/fraud-detection, creditcard.csv)
+    - Preprocesses data (splits, scaling)
+    - Trains a PyOD AutoEncoder on normal transactions
+    - Evaluates on validation and test sets
+    - Generates ROC curve and anomaly score distribution plots
+
+- README.md
+    Project documentation, including:
+    - Overview
+    - Project structure
+    - Installation instructions
+    - Dataset access using KaggleHub
+    - How to run the script
+    - Description of outputs and evaluation metrics
+
+- manifest.txt
+    This manifest file. Provides:
+    - Project description
+    - File inventory
+    - Environment and dependency summary
+    - Execution instructions
+
+- requirements.txt
+    Python dependencies, including:
+    - numpy
+    - pandas
+    - scikit-learn
+    - matplotlib
+    - tqdm
+    - pyod
+    - torch
+    - kagglehub[pandas-datasets]
+
+- autoencoder_roc_curve.png (generated)
+    ROC curve for the AutoEncoder model on the test set. Created when the script successfully runs.
+
+- autoencoder_score_distribution.png (generated)
+    Histogram of anomaly scores for normal and fraud transactions on the test set, with the decision threshold indicated. Created when the script successfully runs.
+
+Environment:
+- Python version: 3.9+ recommended
+- Operating System: Any (tested on Linux)
+- Required libraries: listed in requirements.txt
+
+Setup Instructions:
+1. Create and activate a virtual environment:
+   - python3 -m venv venv
+   - source venv/bin/activate    (Windows: venv\Scripts\activate)
+
+2. Install dependencies:
+   - pip install -r requirements.txt
+
+   If PyTorch fails to install via requirements.txt, install CPU-only PyTorch manually:
+   - pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+3. Ensure that you have internet connectivity so that KaggleHub can download the dataset from Kaggle.
+
+Execution Instructions:
+1. From the project root directory, run:
+   - python src/train_autoencoder.py
+
+2. The script will:
+   - Download and load the Kaggle dataset (whenamancodes/fraud-detection, creditcard.csv) using KaggleHub.
+   - Split the data into training, validation, and test sets.
+   - Train an AutoEncoder model on normal transactions.
+   - Evaluate the model on validation and test data.
+   - Print classification metrics and confusion matrices to the console.
+   - Generate:
+     - autoencoder_roc_curve.png
+     - autoencoder_score_distribution.png
+
+Notes:
+- The dataset file is not part of the repository and is never committed to Git to avoid GitHub’s 100 MB file size limit.
+- All results and plots used in the assignment Word document are produced by running src/train_autoencoder.py.
+
